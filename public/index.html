@@ -9,23 +9,45 @@
   <body>
     <h1>Up and Running with Serverless Functions</h1>
     <button id="fetch-btn">Fetch</button>
-    <button id="fetch-pokedex-btn">Fetch poke</button>
+    <button id="fetch-kanto-btn">Fetch kanto poke</button>
+    <button id="fetch-hoenn-btn">Fetch hoenn poke</button>
+    <button id="fetch-pvf-btn">Fetch pvf</button>
     <p id="response-output">Response Placeholder</p>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const fetchBtn = document.getElementById('fetch-btn')
-        const fetchPokedexBtn = document.getElementById('fetch-pokedex-btn')
+        const fetchKantoBtn = document.getElementById('fetch-kanto-btn')
+        const fetchHoennBtn = document.getElementById('fetch-hoenn-btn')
+        const fetchpvfBtn = document.getElementById('fetch-pvf-btn')
         const responseText = document.getElementById('response-output')
-
+        fetchpvfBtn.addEventListener('click', async () =>{
+          const response = await fetch('/.netlify/functions/pvfacile').then(response => response.json())
+          responseText.innerText = JSON.stringify(response)
+        })
         fetchBtn.addEventListener('click', async () => {
           const response = await fetch('/.netlify/functions/hello-world').then(response => response.json())
           responseText.innerText = response.message
         })
-        fetchPokedexBtn.addEventListener('click', async () => {
-        const response = await fetch('/.netlify/functions/pokedex').then(response => response.json())
+        fetchKantoBtn.addEventListener('click', async () => {
+        const response = await fetch('/.netlify/functions/pokedex',{
+          method: "POST",
+          body: JSON.stringify({
+            region: 'kanto'
+          })
+        }).then(response => response.json())
         responseText.innerText = JSON.stringify(response)
-        console.log(response)
+        
+      })
+        fetchHoennBtn.addEventListener('click', async () => {
+        const response = await fetch('/.netlify/functions/pokedex',{
+          method: "POST",
+          body: JSON.stringify({
+            region: 'hoenn'
+          })
+        }).then(response => response.json())
+        responseText.innerText = JSON.stringify(response)
+        
       })
 
       })
