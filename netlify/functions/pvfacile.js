@@ -14,7 +14,7 @@ exports.handler = async (event, context, callback) => {
       executablePath: executablePath,
       headless: chromium.headless,
     })
-
+    console.log('0')
     // Do stuff with headless chrome
     const page = await browser.newPage()
     const targetUrl = 'https://davidwells.io'
@@ -23,7 +23,7 @@ exports.handler = async (event, context, callback) => {
     console.log('1')
     await page.goto(targetUrl)
 
-    await page.waitForSelector('#phenomic')
+    
 
     theTitle = await page.title();
     console.log(theTitle)
