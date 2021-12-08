@@ -21,9 +21,7 @@ exports.handler = async (event, context, callback) => {
 
     // Goto page and then do stuff
     console.log('1')
-    await page.goto(targetUrl, {
-      waitUntil: ["domcontentloaded", "networkidle0"]
-    })
+    await page.goto(targetUrl)
 
     await page.waitForSelector('#phenomic')
 
