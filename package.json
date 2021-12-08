@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "netlify-cli": "^8.0.16",
+    "node-fetch": "^2.6.6"
+  },
+  "name": "explorer",
+  "description": "Learn how to use serverless functions in less than 30 minutes!",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beafb/explorer.git"
+  },
+  "author": "nico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beafb/explorer/issues"
+  },
+  "homepage": "https://github.com/beafb/explorer#readme"
+}
