@@ -20,6 +20,7 @@ exports.handler = async (event, context, callback) => {
     const targetUrl = 'https://davidwells.io'
 
     // Goto page and then do stuff
+    console.log('1')
     await page.goto(targetUrl, {
       waitUntil: ["domcontentloaded", "networkidle0"]
     })
@@ -27,7 +28,7 @@ exports.handler = async (event, context, callback) => {
     await page.waitForSelector('#phenomic')
 
     theTitle = await page.title();
-
+    console.log(theTitle)
     console.log('done on page', theTitle)
 
   } catch (error) {
