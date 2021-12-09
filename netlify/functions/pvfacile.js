@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer-core')
 const fetch = require('node-fetch')
 
 exports.handler = async (event, context, callback) => {
-  let theTitle = null
+  let data = null
   let browser = null
   console.log('spawning chrome headless')
   try {
@@ -38,7 +38,7 @@ exports.handler = async (event, context, callback) => {
         'Accept-Language': 'fr,en-US;q=0.9,en;q=0.8'
     }
 });
-  const data = await resp.json()
+  data = await resp.json()
 
   } catch (error) {
     console.log('error', error)
@@ -58,7 +58,7 @@ exports.handler = async (event, context, callback) => {
   return callback(null, {
     statusCode: 200,
     body: JSON.stringify({
-      data: data,
+      title: data,
     })
   })
 }
