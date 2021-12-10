@@ -37,8 +37,9 @@ exports.handler = async (event, context, callback) => {
         'Referer': 'https://www.amendes.gouv.fr/',
         'Accept-Language': 'fr,en-US;q=0.9,en;q=0.8'
     }
-});
+  });
   data = await resp.json()
+  return JSON.stringify({statusCode: 200, body: data})
 
   } catch (error) {
     console.log('error', error)
